@@ -1,0 +1,56 @@
+<button id="create-button">Create</button>
+<button id="update-button">Update</button>
+<button id="delete-button">Delete</button>
+
+<script>
+  document.querySelector('#create-button').onclick = () => {
+    fetch(
+      '/cats',
+      {
+        method: 'POST',
+        headers: {
+          'X-Http-Method-Override': 'post',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ example_param: 'example_value' }),
+      }
+    ).then(response => response.json())
+     .then(data => { alert(data.message) });
+
+    return false;
+  };
+
+  document.querySelector('#update-button').onclick = () => {
+    fetch(
+      '/cats/1',
+      {
+        method: 'POST',
+        headers: {
+          'X-Http-Method-Override': 'patch',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ example_param: 'example_value' }),
+      }
+    ).then(response => response.json())
+     .then(data => { alert(data.message) });
+
+    return false;
+  };
+
+  document.querySelector('#delete-button').onclick = () => {
+    fetch(
+      '/cats/1',
+      {
+        method: 'POST',
+        headers: {
+          'X-Http-Method-Override': 'delete',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ example_param: 'example_value' }),
+      }
+    ).then(response => response.json())
+     .then(data => { alert(data.message) });
+
+    return false;
+  };
+</script>
